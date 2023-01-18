@@ -27,40 +27,40 @@ export default {
                         return upperLeng
                       
                     }
+                },
+                stars(valore){
+                    let num = math.floor(valore.vote_average / 2);
+                    let starsarray = []
+                    for(let i = 0; i < num; i++){
+                        starsarray.push('fa-solid fa star')
+                    }
+
+                    let starEmpty = 5 - num;
+                    for(let i = 0; i < starEmpty; i++){
+                        starsarray.push('fa regular fa-star')
+                    }
+                    return starsarray
                 }
             }
    
 }
 </script>
 <template lang="">
-<div class="col card">
+<div class="card">
    
-<div class="card-container">
-    <h3 class="card-title">{{cardSerie.name}}</h3>
-</div>
+    <img class="img-cover" :src="`https://image.tmdb.org/t/p/w342${cardSerie.poster_path}`" alt="">
+        <div class="card-info">
+            <h3 class="card-title">{{cardSerie.title}}</h3>
+            <h3>titolo {{cardSerie.original_title}}</h3>
+            <h3>lingua {{cardSerie.original_language}}</h3> 
+            <h3>voto {{cardSerie.average}}</h3> 
+            <div>
+                <i v-for="(item, index) in stars(cardSerie)" :key="index" :class="item"></i>
+            </div>
+            <img :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(cardSerie)}.png`">
 
-<ul class="list-series">
-    
-    <li class="list-series-item">
-        <div>
-            titolo: {{cardSerie.original_name}}
         </div>
-    </li>
-    <li class="list-series-item">
-        <div>
-            lingua:{{cardSerie.original_language}}
-        </div>
-    </li>
-    <li class="list-series-item">
-        <div>
-            voto: {{cardSerie.vote_average}}
-        </div>
-    </li>
-    <li class="list-series-item">
-        <img :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(cardSerie)}.png`">
-    </li>
-</ul>
-</div>
+    </div>
 </template>
 <style lang="">
 
