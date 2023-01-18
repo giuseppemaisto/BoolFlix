@@ -1,11 +1,11 @@
 <script>
 import { store } from '../store';
-import cardFilm from './cardFilm.vue';
+import AppFilm from './AppFilm.vue';
 import AppSeries from './AppSeries.vue';
 import axios from 'axios'
 export default {
   components:{
-    cardFilm,
+    AppFilm,
     AppSeries,
   },
   data(){
@@ -54,7 +54,7 @@ export default {
 </div>
 <div class="row row-cols-5 gap-5 justify-content-between">
     <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
-   <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
+    <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
 
 </div>
 </div>
