@@ -23,8 +23,16 @@
                       
                     }
                 },
+                imageEmpty(){
+                    if(this.movie.poster_path != null){
+                        return `https://image.tmdb.org/t/p/w342/${(this.movie.poster_path)}`
+                    }
+                    else{
+                        return "non presente "
+                    }
+                },
                 stars(valore){
-                    let num = math.floor(valore.vote_average / 2);
+                    let num = Math.floor(valore.vote_average / 2);
                     let starsarray = []
                     for(let i = 0; i < num; i++){
                         starsarray.push('fa-solid fa star')
@@ -42,15 +50,18 @@
         </script>
 <template lang="">
     <div class="card">
-        <img class="img-cover" :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" alt="">
+        <img class="img-cover" :src="imageEmpty()" alt="movie.title">
         <div class="card-info">
             <h3 class="card-title">{{movie.title}}</h3>
-            <h3>titolo {{movie.original_title}}</h3>
+            <h3 class="titolo">titolo: {{movie.name}}</h3>
             <h3>lingua {{movie.original_language}}</h3> 
-            <h3>voto {{movie.average}}</h3> 
-            <div>
-                <i v-for="(item, index) in stars(movie)" :key="index" :class="item"></i>
+            <div class="container-voto">
+                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in Math.floor(movie.average / 2) "></i>
+                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in (5 - Math.floor(movie.average / 2)) "></i>
+                <h3 class="voto">voto {{movie.average}}</h3> 
             </div>
+
+         
             <img :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(movie)}.png`" alt="{{ movie.original_language }}">
         </div>
     </div>
@@ -60,6 +71,13 @@
     height: 100%;
 
     
+}
+.titolo{
+    color:red;
+
+}
+.voto{
+    color: red;
 }
     
 </style>
