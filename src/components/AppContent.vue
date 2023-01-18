@@ -23,9 +23,9 @@ export default {
         })
     },
     searchSerie(input){
-      let apiSerie = store.apiSerie + store.api_key + input;
+      let Serie = store.apiSerie + input;
 
-      axios.get(apiSerie).then((response)=>{
+      axios.get(Serie).then((response)=>{
         store.serieList = response.data.results
       })
     },
@@ -54,7 +54,7 @@ export default {
 </div>
 <div class="row row-cols-5 gap-5 justify-content-between">
     <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
-    <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
+   <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
 
 </div>
 </div>
