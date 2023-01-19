@@ -17,6 +17,9 @@
                             case 'en':
                                 leng = 'gb'
                                 break;
+                            case 'ja':
+                            leng = 'jp'
+                            break;
 
                                 default:
                                     leng = (valore.original_language)
