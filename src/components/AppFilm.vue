@@ -1,6 +1,11 @@
         <script>
         import { store } from '../store';
         export default {
+            data(){
+                return {
+                    hover:false
+                }
+            },
             props:{
                 movie: Object,
             },
@@ -43,17 +48,25 @@
                         starsarray.push('fa regular fa-star')
                     }
                     return starsarray
+                },
+                descriptionCut(){
+                    if(this.movie.overview.lenght > 150){
+                        this.movie.overview = this.movie.overview.substring(0, 150) + '...'
+                        return this.movie.overview
+                    }
+                    return this.movie.overview
                 }
                 
             }
         }
         </script>
 <template lang="">
-    <div class="card">
+    <div class="card" @mouseenter=" hover = true" @mouseleave=" hover = false">
         <img class="img-cover" :src="imageEmpty()" alt="movie.title">
-        <div class="card-info">
+        <div class="card-info" v-if="hover">
             <h3 class="card-title">{{movie.title}}</h3>
             <h3 class="titolo">titolo: {{movie.name}}</h3>
+            <p>{{descriptionCut()}}</p>
             <h3>lingua {{movie.original_language}}</h3> 
             <div class="container-voto">
                 <i class="fa-solid fa-star stella-piena" v-for="(item, index) in Math.floor(movie.average / 2) "></i>
