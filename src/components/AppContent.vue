@@ -61,7 +61,7 @@ export default {
   ::-webkit-scrollbar{
   width:0.8em;
   height:0.8em;
-  background: red;
+  background: #C63531;
   margin-right: 10px;
 }
 ::-webkit-scrollbar-thumb:hover{

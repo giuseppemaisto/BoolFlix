@@ -48,7 +48,7 @@ header{
     justify-content: space-between;
     align-items:center ;
     padding: 1rem;
-    border-bottom: 4px solid red;
+    border-bottom: 4px solid #C63531;
 
     img{
         width: 150px;
