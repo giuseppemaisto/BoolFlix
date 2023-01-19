@@ -52,7 +52,7 @@ export default {
                     return starsarray
                 },
                 descriptionCut(){
-                    if(this.cardSerie.overview.lenght > 150){
+                    if(this.cardSerie.overview.length > 150){
                         this.cardSerie.overview = this.cardSerie.overview.substring(0, 150) + '...'
                         return this.cardSerie.overview
                     }
@@ -67,25 +67,22 @@ export default {
     <img class="img-cover" :src="imageEmpty()" alt="cardSerie.title">
     
         <div class="card-info" v-if="hover">
-            <h3 class="card-title">{{cardSerie.original_name}}</h3>
-            <h3 class="titolo">titolo:{{cardSerie.name}}</h3>
+            
+            <h3 class="titolo">{{cardSerie.name}}</h3>
             <p>{{ descriptionCut() }}</p>
             <h3>lingua {{cardSerie.original_language}}</h3> 
             <i class="fa-solid fa-star stella-piena" v-for="(item, index) in Math.floor(cardSerie.vote_average / 2) "></i>
                 <i class="fa-solid fa-star stella-piena" v-for="(item, index) in (5 - Math.floor(cardSerie.vote_average / 2)) "></i>
             <h3 class="voto">voto {{cardSerie.vote_average}}</h3> 
        
-            <img :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(cardSerie)}.png`">
+            <img class="language-img" :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(cardSerie)}.png`">
 
         </div>
     </div>
 </template>
 <style lang="scss">
-.titolo{
-    color:red;
-
-}
-.voto{
-    color: red;
+@use '../styles/generals.scss' as *;
+p{
+    margin-bottom: 1rem;
 }
 </style>

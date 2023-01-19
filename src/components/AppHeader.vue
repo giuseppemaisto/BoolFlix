@@ -36,10 +36,23 @@ export default {
 </script>
 <template lang="">
 <header>
-
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/400px-Netflix_2015_logo.svg.png" alt="">
     <AppSearch @buttonClick="ricercaTutto"></AppSearch>
 </header>
 </template>
-<style lang="">
+<style lang="scss" scoped>
+header{
+    height: 75px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    padding: 1rem;
+    border-bottom: 4px solid red;
+
+    img{
+        width: 150px;
+    }
+}
 
 </style>

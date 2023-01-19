@@ -18,13 +18,14 @@ export default {
 }
 </script>
 <template lang="">
-<div class="container my-4">
-  <div>
-      ho trovato {{store.movieList.length}} contenuti 
+<div class="container-content my-4">
+
+   <h1>I FILM DI NETFLIX</h1>
+  <div class="movie-container">
+      <AppFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></AppFilm>
   </div>
-   
-  <div class="row row-cols-5 gap-5 justify-content-between">
-      <cardFilm v-for="(item, index) in store.movieList" :key="index" :movie="item"></cardFilm>
+  <h1>LE SERIE TV DI NETFLIX</h1>
+  <div class="movie-container">
       <AppSeries v-for="(item, index) in store.serieList" :key="index" :cardSerie="item"></AppSeries>
   
   </div>
@@ -32,6 +33,41 @@ export default {
 </div>
 
 </template>
-<style lang="">
+<style lang="scss">
+@use '../styles/partials/variable' as *;
 
+.container-content{
+  background-color: $black;
+  width: 100%;
+
+  h1{
+    color: $secondary-color;
+    margin-left: 1rem;
+
+  }
+
+  .movie-container{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    padding: 1rem;
+    overflow-x: scroll;
+   
+    
+    
+    
+    
+  }
+  ::-webkit-scrollbar{
+  width:0.8em;
+  height:0.8em;
+  background: red;
+  margin-right: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color:white ;
+  border: none;
+}
+  
+}
 </style>

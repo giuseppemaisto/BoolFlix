@@ -21,5 +21,6 @@
   </div>
 </template>
 <style lang="scss">
+@use './styles/partials/variable.scss' as *;
   @use './styles/generals.scss' as *;
 </style>

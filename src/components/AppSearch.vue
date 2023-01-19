@@ -17,6 +17,21 @@
 
     </div>
 </template>
-<style lang="">
+<style lang="scss">
+@use '../styles/partials/variable' as *;
+.form-control{
+    width: 400px;
+    height: 2rem;
+    border: 2px solid red;
+}
+button{
+    border:none;
+    background-color: white;
+    color:red;
+    margin-left: 1rem;
+    font-size: 15px;
+    padding: 0.5rem;
+    border: 1px solid red
+}
     
 </style>

@@ -1,13 +1,13 @@
         <script>
         import { store } from '../store';
         export default {
+            props:{
+                movie: Object,
+            },
             data(){
                 return {
                     hover:false
                 }
-            },
-            props:{
-                movie: Object,
             },
             methods: {
                 getLenguage(valore){
@@ -50,7 +50,7 @@
                     return starsarray
                 },
                 descriptionCut(){
-                    if(this.movie.overview.lenght > 150){
+                    if(this.movie.overview.length > 150){
                         this.movie.overview = this.movie.overview.substring(0, 150) + '...'
                         return this.movie.overview
                     }
@@ -64,33 +64,22 @@
     <div class="card" @mouseenter=" hover = true" @mouseleave=" hover = false">
         <img class="img-cover" :src="imageEmpty()" alt="movie.title">
         <div class="card-info" v-if="hover">
-            <h3 class="card-title">{{movie.title}}</h3>
-            <h3 class="titolo">titolo: {{movie.name}}</h3>
+           
+            <h3 class="titolo">{{movie.original_title}}</h3>
             <p>{{descriptionCut()}}</p>
             <h3>lingua {{movie.original_language}}</h3> 
             <div class="container-voto">
-                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in Math.floor(movie.average / 2) "></i>
-                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in (5 - Math.floor(movie.average / 2)) "></i>
-                <h3 class="voto">voto {{movie.average}}</h3> 
+                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in Math.floor(movie.vote_average / 2) "></i>
+                <i class="fa-solid fa-star stella-piena" v-for="(item, index) in (5 - Math.floor(movie.vote_average / 2)) "></i>
+                <h3 class="voto">voto {{movie.vote_average}}</h3> 
             </div>
 
          
-            <img :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(movie)}.png`" alt="{{ movie.original_language }}">
+            <img class="language-img" :src="`https://www.countryflagicons.com/FLAT/64/${getLenguage(movie)}.png`" alt="{{ movie.original_language }}">
         </div>
     </div>
 </template>
 <style lang="scss">
-.card{
-    height: 100%;
-
-    
-}
-.titolo{
-    color:red;
-
-}
-.voto{
-    color: red;
-}
+@use '../styles/generals.scss' as *;
     
 </style>
